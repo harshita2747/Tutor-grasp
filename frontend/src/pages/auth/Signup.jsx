@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("parent");
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,10 +17,20 @@ function Signup() {
             return;
         }
 
-        console.log({ email, password });
-        alert(" welcome to tutor grasp");
+        // Save user to localStorage users array
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        // Check if user already exists
+        const exists = users.find((u) => u.email === email);
+        if (exists) {
+            alert("User already exists. Please login.");
+            return;
+        }
 
-
+        const newUser = { name, email, password, role };
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Welcome to Tutor Grasp — account created. Please login.");
+        navigate("/login");
     };
 
     return (
