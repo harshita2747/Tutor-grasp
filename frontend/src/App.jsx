@@ -3,7 +3,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import Students from "./pages/students/Students";
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /></ProtectedRoute>} />
-    </Routes>
+      <Route path="/students" element={<ProtectedRoute> <Students /></ProtectedRoute>} />
+    </Routes> 
   );
 }
 

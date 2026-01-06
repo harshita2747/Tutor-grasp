@@ -20,7 +20,7 @@ function Dashboard() {
               <p className="text-3xl mt-2 text-white">0</p>
             </div>
 
-            <div className="bg-white p-4 bg-yellow-500 rounded shadow">
+            <div className="p-4 bg-yellow-500 rounded shadow">
               <h4 className="font-semibold text-white">Pending Fees</h4>
               <p className="text-3xl mt-2 text-white">₹0</p>
             </div>
