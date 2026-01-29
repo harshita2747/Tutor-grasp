@@ -1,19 +1,18 @@
-import express from "express";
-import cors from "cors";
-import authRoutes from "./routes/authRoute.js";
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Import routes
+import studentRoutes from './routes/studentRoutes.js';
 
-app.use("/api/auth", authRoutes);
+// Use routes
+app.use('/api/students', studentRoutes);
 
+// Add other routes here as needed
 
-
-app.get ("/", (req,res) => {
-        res.send("backend is running");
-});
-
-export default app;
+export default app;  // ← Make sure this line is present!
