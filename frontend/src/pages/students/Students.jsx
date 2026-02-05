@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from 'react-toastify'
 import axios from 'axios';
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
@@ -13,33 +14,34 @@ function Students() {
     const [showModal, setShowModal] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    const [error, setError] = useState(null);
     // Fetch students from backend when component mounts
     useEffect(() => {
         fetchStudents();
     }, []);
 
     const fetchStudents = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get('http://localhost:5000/api/students');
-            setStudents(response.data);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching students:', error);
-            setLoading(false);
-            alert('Failed to fetch students');
-        }
-    };
+    try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get('http://localhost:5000/api/students');
+        setStudents(response.data);
+        setLoading(false);
+    } catch (error) {
+        console.error('Error fetching students:', error);
+        setLoading(false);
+        
+    }
+};
 
     const handleAddStudent = async (student) => {
         try {
             const response = await axios.post('http://localhost:5000/api/students/add', student);
             setStudents([...students, response.data]);
-            alert('Student added successfully!');
+            toast.success('Student added successfully!');
         } catch (error) {
             console.error('Error adding student:', error);
-            alert('Failed to add student');
+            toast.error('Failed to add student');
         }
     };
 
@@ -51,10 +53,10 @@ function Students() {
                 students.map((s, i) => (i === editingIndex ? response.data : s))
             );
             setEditingIndex(null);
-            alert('Student updated successfully!');
+            toast.success('Student updated successfully!');
         } catch (error) {
             console.error('Error updating student:', error);
-            alert('Failed to update student');
+            toast.error('Failed to update student');
         }
     };
 
@@ -64,10 +66,10 @@ function Students() {
                 const studentId = students[index]._id;
                 await axios.delete(`http://localhost:5000/api/students/${studentId}`);
                 setStudents(students.filter((_, i) => i !== index));
-                alert('Student deleted successfully!');
+                toast.success('Student deleted successfully!');
             } catch (error) {
                 console.error('Error deleting student:', error);
-                alert('Failed to delete student');
+                toast.error('Failed to delete student');
             }
         }
     };
@@ -179,7 +181,7 @@ function Students() {
                                             </td>
                                             <td className="p-3 space-x-2">
                                                 <button
-                                                    className="text-blue-500"
+                                                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
                                                     onClick={() => {
                                                         setEditingIndex(index);
                                                         setShowModal(true);
@@ -188,7 +190,7 @@ function Students() {
                                                     Edit
                                                 </button>
                                                 <button
-                                                    className="text-red-500"
+                                                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
                                                     onClick={() => handleDeleteStudent(index)}
                                                 >
                                                     Delete
