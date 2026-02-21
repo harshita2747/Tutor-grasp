@@ -2,7 +2,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Topbar() {
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -12,7 +12,7 @@ function Topbar() {
 
     return (
         <div className="flex justify-between items-center bg-white p-4 shadow">
-            <h2 className="text-xl font-semibold">Admin Dashboard</h2>
+            <h2 className="text-xl font-semibold"> {user?.name} Dashboard</h2>
 
             <button
                 onClick={handleLogout}
