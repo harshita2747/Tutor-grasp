@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 
+
 const Dashboard = () => {
 
   const [stats, setStats] = useState({
     totalStudents: 0,
     paidStudents: 0,
     pendingStudents: 0,
-    totalFees: 0
+    totalFees: 0,
+    presentToday:0
   });
   useEffect(() => {
     fetch("http://localhost:5000/api/dashboard")
@@ -18,6 +20,7 @@ const Dashboard = () => {
   }, []);
 
   return (
+    
     <div className="flex">
       <Sidebar />
 
@@ -30,7 +33,7 @@ const Dashboard = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-blue-500 p-4 rounded shadow">
+            <div className="bg-blue-500  p-4 rounded-xl shadow">
               <h4 className="font-semibold text-white">Total Students:</h4>
               <p className="text-3xl mt-2 text-white">{stats.totalStudents}</p>
             </div>
@@ -40,14 +43,14 @@ const Dashboard = () => {
               <p className="text-3xl mt-2 text-white">₹{stats.paidStudents}</p>
             </div> */}
 
-            <div className="p-4 bg-yellow-500 rounded shadow">
+            <div className="p-4 bg-yellow-500 rounded-xl shadow">
               <h4 className="font-semibold text-white">Pending Fees:</h4>
               <p className="text-3xl mt-2 text-white">{stats.pendingStudents}</p>
             </div>
 
-            <div className=" p-4 bg-purple-500 rounded shadow">
+            <div className=" p-4 bg-purple-500 rounded-xl shadow">
               <h4 className="font-semibold text-white">Today Attendance:</h4>
-              <p className="text-3xl mt-2 text-white">0</p>
+              <p className="text-3xl mt-2 text-white">{stats.presentToday}</p>
             </div>
           </div>
         </div>

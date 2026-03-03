@@ -6,6 +6,8 @@ import Signup from "./pages/auth/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Students from "./pages/students/Students";
+import Attendance from "./pages/attendance/Attendance";
+import { Home, User, LogOut } from "lucide-react";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /></ProtectedRoute>} />
       <Route path="/students" element={<ProtectedRoute> <Students /></ProtectedRoute>} />
+      <Route path="/attendance" element={<ProtectedRoute> <Attendance /></ProtectedRoute>} />
     </Routes> 
     <ToastContainer/>
    </>

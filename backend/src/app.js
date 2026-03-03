@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import studentRoutes from './routes/studentRoutes.js'; //import Routes
+import studentRoutes from './routes/studentRoutes.js'; 
 import dashboardRoutes from './routes/dashboardRoutes.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 
 const app = express();
@@ -13,7 +14,8 @@ app.use(express.json());
 // Use routes
 app.use('/api/students', studentRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/attendance', attendanceRoutes);
 
-// Add other routes here as needed
 
-export default app;  // ← Make sure this line is present!
+
+export default app;  

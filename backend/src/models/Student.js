@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  className: {  // Changed from 'class' to 'className'
+  className: {  // className
     type: String, 
     required: true 
   },
@@ -14,7 +14,7 @@ const studentSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  school: {  // Added school field
+  school: {  // school field
     type: String, 
     required: true 
   },
@@ -22,7 +22,7 @@ const studentSchema = new mongoose.Schema({
     type: Number, 
     required: true 
   },
-  feesStatus: {  // Added feesStatus field
+  feesStatus: {  //  feesStatus field
     type: String,
     enum: ['Paid', 'Pending'],
     default: 'Pending'
