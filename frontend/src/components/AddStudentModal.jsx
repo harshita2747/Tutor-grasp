@@ -6,7 +6,7 @@ function AddStudentModal({ onClose, onAdd, initial = null, onSave }) {
     className: initial?.className || "",
     phone: initial?.phone || "",
     school: initial?.school || "",
-    schoolFees: initial?.schoolFees || "",  // ← Added this
+    schoolFees: initial?.schoolFees || "",  
     feesStatus: initial?.feesStatus || "Pending",
   });
 
@@ -18,10 +18,10 @@ function AddStudentModal({ onClose, onAdd, initial = null, onSave }) {
       return;
     }
 
-    // Convert schoolFees to number before sending
+    
     const studentData = {
       ...form,
-      schoolFees: Number(form.schoolFees)  // ← Convert to number
+      schoolFees: Number(form.schoolFees)  
     };
 
     if (initial && typeof onSave === "function") {

@@ -4,9 +4,6 @@ import Student from '../models/Student.js';
 
 const router = express.Router();
 
-/* =========================
-   MARK ATTENDANCE (TODAY)
-========================= */
 router.post('/mark', async (req, res) => {
   try {
     const { studentId, status } = req.body;
@@ -38,9 +35,7 @@ router.post('/mark', async (req, res) => {
   }
 });
 
-/* =========================
-   GET ATTENDANCE SUMMARY
-========================= */
+
 router.get('/summary', async (req, res) => {
   try {
     const totalClasses = await Attendance.distinct('date').then(d => d.length);

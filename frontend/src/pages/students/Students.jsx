@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify'
 import axios from 'axios';
+import { Trash, Pencil } from "lucide-react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 import AddStudentModal from "../../components/AddStudentModal";
@@ -15,6 +16,7 @@ function Students() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
     // Fetch students from backend when component mounts
     useEffect(() => {
         fetchStudents();
@@ -186,14 +188,16 @@ function Students() {
                                                         setEditingIndex(index);
                                                         setShowModal(true);
                                                     }}
-                                                >
-                                                    Edit
+                                                > <div className="flex items-center gap-1"> <Pencil className="w-4 h-4" />
+                                                    edit</div>
                                                 </button>
                                                 <button
-                                                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                                                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 "
                                                     onClick={() => handleDeleteStudent(index)}
+                                                
                                                 >
-                                                    Delete
+                                                    <div className="flex items-center gap-1"> <Trash className="w-4 h-4" />
+                                                    Delete</div>
                                                 </button>
                                             </td>
                                         </tr>

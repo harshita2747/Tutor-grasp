@@ -10,9 +10,7 @@ function Attendance() {
   const [summary, setSummary] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  /* =========================
-     FETCH DATA
-  ========================= */
+
   const fetchData = async () => {
     try {
       const studentRes = await fetch("http://localhost:5000/api/students");
@@ -36,9 +34,8 @@ function Attendance() {
     fetchData();
   }, []);
 
-  /* =========================
-     MARK ATTENDANCE
-  ========================= */
+ //mark attendenace
+
   const markAttendance = async (studentId, status) => {
     try {
       await fetch("http://localhost:5000/api/attendance/mark", {
@@ -53,9 +50,6 @@ function Attendance() {
     }
   };
 
-  /* =========================
-     AUTH PROTECTION
-  ========================= */
   if (!user) {
     return <p className="p-6">Unauthorized</p>;
   }
@@ -64,9 +58,6 @@ function Attendance() {
     return <p className="p-6">Loading attendance...</p>;
   }
 
-  /* =========================
-     UI
-  ========================= */
   return (
     <div className="flex min-h-screen bg-gray-100">
         <Sidebar />

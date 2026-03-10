@@ -13,7 +13,7 @@ function Topbar() {
 
     return (
         <div className="flex justify-between items-center bg-white p-4 shadow">
-           <div className="flex justify-between gap-2"> 
+           <div className="flex items-center gap-1"> 
          <LayoutDashboard className=""/>
             <h2 className="text-xl font-semibold"> {user?.name} Dashboard</h2>
             </div>
