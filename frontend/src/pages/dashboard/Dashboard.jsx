@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
+import {User,PiggyBank,ReceiptText} from "lucide-react";
 
 
 const Dashboard = () => {
@@ -33,9 +34,12 @@ const Dashboard = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-blue-500  p-4 rounded-xl shadow">
+            <div className="flex justify-between bg-blue-500  p-4 rounded-xl shadow">
+           <div>
               <h4 className="font-semibold text-white">Total Students:</h4>
               <p className="text-3xl mt-2 text-white">{stats.totalStudents}</p>
+            </div>
+            <div><User className="w-16 h-16 text-white" /></div>
             </div>
 
             {/* <div className=" p-4 bg-purple-500 rounded shadow">
@@ -43,14 +47,20 @@ const Dashboard = () => {
               <p className="text-3xl mt-2 text-white">₹{stats.paidStudents}</p>
             </div> */}
 
-            <div className="p-4 bg-yellow-500 rounded-xl shadow">
-              <h4 className="font-semibold text-white">Pending Fees:</h4>
+            <div className="flex justify-between p-4 bg-yellow-500 rounded-xl shadow">
+              <div>
+                <h4 className="font-semibold text-white">Pending Fees:</h4>
               <p className="text-3xl mt-2 text-white">{stats.pendingStudents}</p>
+              </div>
+            <div><PiggyBank className="w-16 h-16 text-white" /></div>
             </div>
 
-            <div className=" p-4 bg-purple-500 rounded-xl shadow">
+            <div className="flex justify-between p-4 bg-purple-500 rounded-xl shadow">
+             <div> 
               <h4 className="font-semibold text-white">Today Attendance:</h4>
               <p className="text-3xl mt-2 text-white">{stats.presentToday}</p>
+              </div>
+              <div><ReceiptText className="w-16 h-16 text-white" /></div>
             </div>
           </div>
         </div>
