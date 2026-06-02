@@ -26,6 +26,10 @@ This project is **currently under development**, and features are being graduall
 
 <img width="792" height="535" alt="image" src="https://github.com/user-attachments/assets/e192a332-1edf-4e50-8104-61dcdec3954c" />
 
+## 📄 License
+
+This project is licensed under the MIT License.
+
 
 
 
